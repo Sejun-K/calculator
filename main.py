@@ -1,5 +1,5 @@
 import sys #빌트인 모듈로, 시스템 명령어를 수행할 수 있도록 도와준다.
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout,QMessageBox)
 
 # QWidget을 기반을 한 클래스를 설계하여 추후 객체 생성하도록 하겠다!
 class Calculator(QWidget) :
@@ -10,10 +10,22 @@ class Calculator(QWidget) :
         self.initUI()
 
     def initUI(self) :
+        self.btn1 = QPushButton('Message', self)
+        self.btn1.clicked.connect(self.activateMessage)
+
+        vbox = QVBoxLayout()
+        vbox.addStretch(1)
+        vbox.addWidget(self.btn1)
+        vbox.addStretch(1)
+
+        self.setLayout(vbox)
+
         self.setWindowTitle('Calculator')
         self.resize(256,256)
         self.show()
 
+    def activateMessage(self) :
+         QMessageBox.information(self,'information', 'Button clicked!')
 
 # 이 파일을 직접 실행할 시에만 명령을 수행하겠다!
 if __name__=='__main__' :
