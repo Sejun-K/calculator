@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import (QApplication,
 
 import random # 내 맘대로 로또 추첨 기능 추가 할래
 
+from prompt import sayhello
+
 # QWidget을 기반을 한 클래스를 설계하여 추후 객체 생성하도록 하겠다!
 class Calculator(QWidget) :
 
@@ -48,6 +50,7 @@ class Calculator(QWidget) :
 
 # 이 파일을 직접 실행할 시에만 명령을 수행하겠다!
 if __name__=='__main__' :
+        sayhello()
         app = QApplication(sys.argv) # 시스템에서 주어지는 인수를 받아 앱을 켜겠다
         view = Calculator() # 위에서 만든 칼큘레이터 객체를 생성하겠다.
         sys.exit(app.exec_()) # 창이 꺼질 시 시스템도 끄겠다.
